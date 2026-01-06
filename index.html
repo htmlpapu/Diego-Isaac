@@ -3,368 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diego Chicaiza</title>
+    <title>Diego Chicaiza | Business Consultant</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* PALETA DE COLORES MEJORADA */
-            --bg-dark: #0a0a0a;
-            --bg-panel: #161616;
-            --text-main: #ededed;
-            --text-muted: #888888;
-            --accent-blue: #3291ff; /* Un azul más "eléctrico" para detalles */
-            --nestle-brand: #004F9F;
+            --bg-body: #050505; /* Casi negro absoluto */
+            --bg-card: #111111;
+            --text-main: #ffffff;
+            --text-muted: #737373; /* Gris George Kim exacto */
+            --accent: #3b82f6; /* Azul sutil para links */
+            --border: #262626;
             --font-main: 'Inter', sans-serif;
         }
 
         body {
-            /* 2. FONDO CON DEGRADADO SUTIL (YA NO ES PLANO) */
-            background: radial-gradient(circle at top right, #1a202c, var(--bg-dark));
+            background-color: var(--bg-body);
             color: var(--text-main);
             font-family: var(--font-main);
             margin: 0;
             display: flex;
             min-height: 100vh;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased; /* Texto más nítido */
+            -webkit-font-smoothing: antialiased;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.2s ease; }
-        a:hover { color: var(--accent-blue); }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+        a:hover { color: #fff; }
 
+        /* --- LAYOUT PRINCIPAL --- */
         .container {
             display: flex;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* --- BARRA LATERAL (PERFIL) --- */
+        /* 1. SIDEBAR (Navegación Fija) */
         .sidebar {
-            width: 320px;
-            padding: 5rem 3rem;
+            width: 280px;
+            padding: 4rem 2rem;
             position: sticky;
             top: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            /* Línea divisoria más sutil */
-            border-right: 1px solid rgba(255,255,255,0.05); 
+            border-right: 1px solid var(--border);
+            flex-shrink: 0;
         }
 
-        .profile-container {
-            animation: fadeIn 1s ease;
-        }
+        .brand { font-weight: 700; font-size: 1rem; color: #fff; display: flex; align-items: center; gap: 10px; }
+        .avatar-small { width: 32px; height: 32px; border-radius: 50%; filter: grayscale(100%); }
 
-        .profile-pic {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 2rem;
-            filter: grayscale(100%);
-            border: 2px solid rgba(255,255,255,0.1); /* Anillo sutil */
-            transition: all 0.4s ease;
-        }
-        .profile-pic:hover { 
-            filter: grayscale(0%); 
-            transform: scale(1.05);
-            border-color: var(--accent-blue);
-        }
+        .nav-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; }
+        .nav-item { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+        .nav-item:hover { color: #fff; transform: translateX(5px); }
+        .nav-item.active { color: #fff; }
 
-        .name { 
-            font-size: 1.5rem; 
-            font-weight: 800; 
-            color: #fff; 
-            letter-spacing: -0.5px; 
-            margin: 0 0 0.5rem 0; 
-        }
-        
-        .tagline { 
-            font-size: 0.95rem; 
-            color: var(--accent-blue); 
-            font-weight: 600;
-            margin-bottom: 1.5rem; 
-            display: block;
-        }
-        
-        .bio { 
-            font-size: 0.9rem; 
-            color: var(--text-muted); 
-            line-height: 1.7;
-        }
+        .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
 
-        .social-links { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 0.8rem; 
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-        .social-links a:hover { opacity: 1; padding-left: 5px; } /* Movimiento al pasar mouse */
-
-        /* --- CONTENIDO PRINCIPAL --- */
+        /* 2. CONTENIDO PRINCIPAL (DENSO) */
         .main-content {
             flex: 1;
-            padding: 5rem 5rem;
+            padding: 5rem 4rem; /* Menos padding para reducir vacíos */
         }
 
-        section { margin-bottom: 6rem; animation: slideUp 1s ease; }
+        /* HEADER DEL PERFIL */
+        .profile-header { margin-bottom: 4rem; max-width: 800px; }
+        h1 { 
+            font-size: 2.2rem; 
+            font-weight: 700; 
+            line-height: 1.2; 
+            letter-spacing: -0.03em; 
+            margin-bottom: 1rem; 
+        }
         
-        h2 { 
-            font-size: 0.8rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
+        .bio-text { 
+            font-size: 1.1rem; 
             color: var(--text-muted); 
-            margin-bottom: 2.5rem; 
+            line-height: 1.6; 
+            max-width: 600px;
+        }
+
+        /* GRID: EXPERIENCIA (IZQ) vs PROYECTOS (DER) */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr; /* CV más ancho, Proyectos a la derecha */
+            gap: 4rem;
+        }
+
+        /* SECCIÓN TÍTULOS */
+        h2 { 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            color: var(--text-muted); 
+            margin-bottom: 1.5rem; 
+            font-weight: 600;
+        }
+
+        /* --- LISTA DE EXPERIENCIA (ESTILO GEORGE KIM "TEAM") --- */
+        .experience-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+        .exp-item {
             display: flex;
             align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* Línea muy sutil */
+            transition: 0.2s;
         }
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: rgba(255,255,255,0.1);
-            margin-left: 1rem;
-        }
+        .exp-item:hover { background: rgba(255,255,255,0.02); padding-left: 10px; border-radius: 6px; border-bottom: 1px solid transparent;}
 
-        /* --- TARJETA DE PROYECTO (EL CASE STUDY) --- */
-        .case-study {
-            background: var(--bg-panel);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra profunda */
-        }
-        
-        /* 3. MICRO-INTERACCIÓN: LEVANTAR AL PASAR MOUSE */
-        .case-study:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--nestle-blue); 
-            box-shadow: 0 20px 40px rgba(0, 79, 159, 0.2); /* Resplandor azul */
-        }
-
-        .case-header {
-            position: relative;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .case-header img { width: 100%; display: block; opacity: 0.95; transition: 0.4s; }
-        .case-study:hover .case-header img { opacity: 1; }
-
-        .case-body { padding: 2.5rem; }
-        
-        .case-title { 
-            font-size: 1.8rem; 
-            font-weight: 700; 
-            color: #fff; 
-            margin: 0 0 0.5rem 0; 
-        }
-        .case-subtitle { 
-            color: var(--accent-blue); 
-            font-size: 1.05rem; 
-            margin-bottom: 1.5rem; 
-            font-weight: 500;
-        }
-        
-        .case-desc { color: #aaa; margin-bottom: 2rem; font-size: 1rem;}
-
-        /* MOCKUPS DE LAPTOP MEJORADOS */
-        .laptop-mockup {
-            background: #000;
-            padding: 12px 12px 0 12px;
-            border-radius: 10px 10px 0 0;
-            margin-top: 2rem;
-            border: 1px solid #333;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
-        }
-        .laptop-mockup img { width: 100%; border-radius: 6px 6px 0 0; display: block;}
-        .caption { 
-            margin-top: 10px; font-size: 0.8rem; color: #555; text-align: center; font-weight: 500; letter-spacing: 0.5px; 
-        }
-
-        /* --- LISTA DE EXPERIENCIA MEJORADA --- */
-        .job-item {
-            display: flex;
-            margin-bottom: 3rem;
-            align-items: flex-start;
-            padding: 1.5rem;
-            border-radius: 12px;
-            transition: 0.3s;
-            border: 1px solid transparent; /* Invisible por defecto */
-        }
-        
-        .job-item:hover {
-            background: rgba(255,255,255,0.03); /* Brillo sutil al pasar mouse */
-            border-color: rgba(255,255,255,0.05);
-        }
-
-        .job-logo {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            margin-right: 1.5rem;
-            background: #fff;
-            padding: 3px;
+        /* LOGOS "OLD WAY" (PEQUEÑOS) */
+        .company-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #fff; /* Fondo blanco para logos PNG */
+            padding: 2px;
             object-fit: contain;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-right: 1rem;
+        }
+
+        .exp-info { flex: 1; }
+        .role { display: block; font-weight: 600; font-size: 0.95rem; color: #fff; }
+        .company { font-size: 0.85rem; color: var(--text-muted); }
+        .date { font-size: 0.85rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+        /* --- LISTA DE PROYECTOS (BOTONES) --- */
+        .projects-list { display: flex; flex-direction: column; gap: 1rem; }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
         
-        .job-role { font-size: 1.15rem; font-weight: 600; color: #fff; }
-        .job-company { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.2rem;}
-        .job-date { 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            color: var(--accent-blue); 
-            font-weight: 600;
-            margin-bottom: 0.8rem; 
-            display: block; 
-        }
-        .job-desc { 
-            font-size: 0.95rem; 
-            color: #bbb; 
-            margin-top: 0.5rem; 
-            line-height: 1.6;
+        .project-card:hover {
+            background: #1a1a1a;
+            border-color: #444;
+            transform: translateY(-2px);
         }
 
-        /* ANIMACIONES DE ENTRADA */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
 
-        /* MÓVIL */
-        @media (max-width: 768px) {
+        .project-info h3 { margin: 0; font-size: 0.95rem; font-weight: 600; color: #fff; }
+        .project-info p { margin: 2px 0 0 0; font-size: 0.8rem; color: var(--text-muted); }
+        .arrow { margin-left: auto; color: var(--text-muted); opacity: 0; transition: 0.2s; }
+        .project-card:hover .arrow { opacity: 1; transform: translateX(5px); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
             .container { flex-direction: column; }
-            .sidebar { 
-                width: 100%; 
-                height: auto; 
-                position: relative; 
-                padding: 3rem 2rem; 
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                border-right: none;
-            }
-            .main-content { padding: 3rem 2rem; }
+            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem; }
+            .content-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .main-content { padding: 3rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        
         <aside class="sidebar">
-            <div class="profile-container">
-                <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Foto%20de%20perfil.jpg?raw=true" alt="Diego Chicaiza" class="profile-pic">
-                
-                <h1 class="name">Diego Chicaiza</h1>
-                <span class="tagline">Aspiring Business & Tech Consultant</span>
-                
-                <p class="bio">
-                    Convierto datos complejos en decisiones rentables. <br><br>
-                    Mi enfoque combina la estrategia financiera con la eficiencia operativa del Supply Chain.
-                </p>
+            <div class="brand">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Foto%20de%20perfil.jpg?raw=true" class="avatar-small">
+                <span>Diego C.</span>
             </div>
 
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
-                <a href="mailto:ysaacwld@gmail.com">Email ↗</a>
-                <a href="https://github.com/htmlpapu" target="_blank">GitHub ↗</a>
+            <nav class="nav-links">
+                <a href="#" class="nav-item active">Overview</a>
+                <a href="#" class="nav-item">Resume (CV)</a>
+                <a href="mailto:ysaacwld@gmail.com" class="nav-item">Contact</a>
+            </nav>
+
+            <div class="contact-area">
+                <span>Based in Quito, EC</span>
+                <span style="color: #444;">© 2026</span>
             </div>
         </aside>
 
         <main class="main-content">
+            
+            <div class="profile-header">
+                <h1>Business Analyst with focus on Strategy & Execution.</h1>
+                <p class="bio-text">
+                    Transformando datos complejos en decisiones rentables. <br>
+                    Especializado en Supply Chain y Finanzas Corporativas.
+                </p>
+                <p style="font-size: 0.9rem; color: #555; margin-top: 1rem;">
+                    Prev. QTGC, Geotransport
+                </p>
+            </div>
 
-            <section>
-                <h2>Featured Case Study</h2>
+            <div class="content-grid">
                 
-                <div class="case-study">
-                    <div class="case-header">
-                        <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Header_Nestle.png?raw=true" alt="Nestle Header">
-                    </div>
-                    
-                    <div class="case-body">
-                        <h3 class="case-title">Nestlé Market Intelligence</h3>
-                        <p class="case-subtitle">Optimización de portafolio y simulación de $490k USD</p>
+                <section>
+                    <h2>Experience (Team)</h2>
+                    <div class="experience-list">
                         
-                        <p class="case-desc">
-                            Desarrollo de un sistema de Business Intelligence para analizar 3.5M kg de importaciones. 
-                            La solución incluye <strong>simuladores financieros (What-If)</strong>, detección de nichos premium y algoritmos de forecasting predictivo.
-                        </p>
-
-                        <div class="laptop-mockup">
-                            <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Vista%204.png?raw=true" alt="Vista Estrategia Financiera">
+                        <div class="exp-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_logo.png?raw=true" class="company-logo" alt="QTGC">
+                            <div class="exp-info">
+                                <span class="role">Analista de Logística (Trainee)</span>
+                                <span class="company">Quito Tenis & Golf Club</span>
+                            </div>
+                            <span class="date">Present</span>
                         </div>
-                        <div class="caption">Vista 4: Simulación de Rentabilidad y Proyección Financiera</div>
 
-                        <div class="laptop-mockup">
-                            <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Vista%201.png?raw=true" alt="Vista Panorama Mercado">
+                        <div class="exp-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Gotransport_logo.png?raw=true" class="company-logo" alt="Geotransport">
+                            <div class="exp-info">
+                                <span class="role">Asistente de Ops. y Finanzas</span>
+                                <span class="company">Geotransport S.A.</span>
+                            </div>
+                            <span class="date">2025</span>
                         </div>
-                        <div class="caption">Vista 1: Panorama Competitivo y Share de Mercado</div>
+
+                        <div class="exp-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Glod_logo.png?raw=true" class="company-logo" alt="Glod">
+                            <div class="exp-info">
+                                <span class="role">Practicante de Importaciones</span>
+                                <span class="company">Venta Directa Glod</span>
+                            </div>
+                            <span class="date">2024</span>
+                        </div>
+
+                        <div class="exp-item">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Ministerio_logo.png?raw=true" class="company-logo" alt="Ministerio">
+                            <div class="exp-info">
+                                <span class="role">Asesor Técnico (Pasantía)</span>
+                                <span class="company">Ministerio de Producción</span>
+                            </div>
+                            <span class="date">2023</span>
+                        </div>
+
+                         <div class="exp-item" style="opacity: 0.7;">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ESPE_logo.png?raw=true" class="company-logo" alt="ESPE">
+                            <div class="exp-info">
+                                <span class="role">Comercio Exterior (Top Class)</span>
+                                <span class="company">Universidad de las Fuerzas Armadas</span>
+                            </div>
+                            <span class="date">2025</span>
+                        </div>
+
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section>
-                <h2>Professional Experience</h2>
+                <section>
+                    <h2>Selected Projects</h2>
+                    <div class="projects-list">
+                        
+                        <a href="#" class="project-card">
+                            <div class="project-icon" style="background: #004F9F; color: white;">N</div> <div class="project-info">
+                                <h3>Nestlé Market Intelligence</h3>
+                                <p>Simulación financiera ($490k) & Forecasting</p>
+                            </div>
+                            <span class="arrow">→</span>
+                        </a>
 
-                <div class="job-item">
-                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/ESPE_logo.png?raw=true" alt="QTGC Logo" class="job-logo">
-                    <div class="job-details">
-                        <div class="job-role">Analista de Logística (Trainee)</div>
-                        <div class="job-company">Quito Tenis & Golf Club</div>
-                        <span class="job-date">Mayo 2025 – Presente</span>
-                        <p class="job-desc">Diseño de tableros ejecutivos en Power BI para el monitoreo de KPIs financieros ($200k+ inversión mensual) y auditoría de trazabilidad de inventarios.</p>
+                        <a href="#" class="project-card">
+                            <div class="project-icon" style="background: #1e3a8a; color: white;">Q</div>
+                            <div class="project-info">
+                                <h3>QTGC Financial Dashboard</h3>
+                                <p>Control de KPIs y Centros de Costos</p>
+                            </div>
+                            <span class="arrow">→</span>
+                        </a>
+
+                        <a href="#" class="project-card">
+                            <div class="project-icon" style="background: #eab308; color: black;">M</div>
+                            <div class="project-info">
+                                <h3>Export Feasibility Model</h3>
+                                <p>Análisis de precios internacionales (Asia)</p>
+                            </div>
+                            <span class="arrow">→</span>
+                        </a>
+
                     </div>
-                </div>
+                </section>
 
-                <div class="job-item">
-                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Gotransport_logo.png?raw=true" alt="Geotransport Logo" class="job-logo">
-                    <div class="job-details">
-                        <div class="job-role">Asistente de Ops. y Finanzas</div>
-                        <div class="job-company">Geotransport S.A.</div>
-                        <span class="job-date">Oct 2024 – Abr 2025</span>
-                        <p class="job-desc">Desarrollo de matrices en Excel para validación de pagos SWIFT y limpieza de datos (ETL) para cumplimiento normativo y auditorías.</p>
-                    </div>
-                </div>
-
-                <div class="job-item">
-                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Glod_logo.png?raw=true" alt="Glod Logo" class="job-logo">
-                    <div class="job-details">
-                        <div class="job-role">Practicante de Importaciones</div>
-                        <div class="job-company">Venta Directa Glod</div>
-                        <span class="job-date">Mar 2024 – Jul 2024</span>
-                        <p class="job-desc">Análisis de estacionalidad de ventas para optimización de compras y digitalización de archivo aduanero.</p>
-                    </div>
-                </div>
-
-                <div class="job-item">
-                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Ministerio_logo.png?raw=true" alt="Ministerio Logo" class="job-logo">
-                    <div class="job-details">
-                        <div class="job-role">Asesor Técnico (Pasantía)</div>
-                        <div class="job-company">Ministerio de Producción y Comercio Exterior</div>
-                        <span class="job-date">May 2023 – Jul 2023</span>
-                        <p class="job-desc">Modelado de datos en Power BI para estudios de factibilidad de exportación a mercados asiáticos.</p>
-                    </div>
-                </div>
-
-            </section>
-
-            <section>
-                <h2>Education</h2>
-                
-                <div class="job-item">
-                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/ESPE_logo.png?raw=true" alt="ESPE Logo" class="job-logo">
-                    <div class="job-details">
-                        <div class="job-role">Licenciatura en Comercio Exterior</div>
-                        <div class="job-company">Universidad de las Fuerzas Armadas ESPE</div>
-                        <span class="job-date">Graduado Jun 2025</span>
-                        <p class="job-desc">Promedio: 18.70/20.00 (Top Class).<br>Becado por Excelencia Académica.</p>
-                    </div>
-                </div>
-            </section>
+            </div>
 
         </main>
     </div>
