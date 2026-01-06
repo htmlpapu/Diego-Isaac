@@ -17,15 +17,15 @@
             --text-main: #ffffff;
             --text-muted: #888;
             
-            /* TU COLOR FAVORITO: MORADO */
-            --accent: #8b5cf6; /* Morado vibrante */
-            --accent-glow: rgba(139, 92, 246, 0.15); /* Resplandor morado */
+            /* ACCENT: PURPLE RAIN */
+            --accent: #8b5cf6; 
+            --accent-glow: rgba(139, 92, 246, 0.15);
             
             --border: #222;
             --font-main: 'Inter', sans-serif;
         }
 
-        html { scroll-behavior: smooth; } /* Scroll suave al dar clic */
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-body);
@@ -69,7 +69,7 @@
         }
         .brand:hover .avatar-small { filter: grayscale(0%); border-color: var(--accent); }
 
-        /* MENU DE NAVEGACIÓN LATERAL */
+        /* NAV LATERAL */
         .nav-links { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 3rem; }
         
         .nav-title { 
@@ -86,13 +86,13 @@
         .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); }
         .contact-area a:hover { color: var(--accent); text-decoration: underline; }
 
-        /* 2. CONTENIDO PRINCIPAL SCROLLABLE */
+        /* 2. CONTENIDO PRINCIPAL */
         .main-content {
             flex: 1;
             padding: 5rem 6rem;
         }
 
-        /* INTRODUCCIÓN */
+        /* HEADER */
         .profile-header { margin-bottom: 5rem; max-width: 800px; border-bottom: 1px solid var(--border); padding-bottom: 3rem;}
         h1 { 
             font-size: 2.5rem; font-weight: 800; line-height: 1.1; 
@@ -111,7 +111,7 @@
         }
         h2::after { content: ""; flex: 1; height: 1px; background: #222; }
 
-        /* --- LISTA DE EXPERIENCIA (COMPACTA) --- */
+        /* EXPERIENCIA */
         .exp-item {
             display: flex; align-items: center; padding: 1rem;
             border-bottom: 1px solid var(--border); transition: 0.3s; border-radius: 8px;
@@ -127,7 +127,7 @@
         .company { font-size: 0.9rem; color: var(--text-muted); }
         .date { font-size: 0.85rem; color: #555; font-variant-numeric: tabular-nums; }
 
-        /* --- GALERÍA DE PROYECTOS (GRANDE) --- */
+        /* PROYECTOS */
         .project-block {
             background: var(--bg-card);
             border-radius: 16px;
@@ -139,7 +139,7 @@
 
         .project-block:hover {
             border-color: var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow); /* EL GLOW MORADO */
+            box-shadow: 0 0 30px var(--accent-glow);
             transform: translateY(-5px);
         }
 
@@ -147,6 +147,8 @@
             width: 100%; height: auto; display: block; 
             border-bottom: 1px solid var(--border); opacity: 0.9;
         }
+        /* Para ajustar headers que sean muy altos */
+        .header-contain { object-fit: cover; max-height: 350px; }
 
         .project-content { padding: 2.5rem; }
         
@@ -154,19 +156,22 @@
         .project-title { font-size: 1.8rem; font-weight: 700; color: #fff; margin: 0; }
         .project-tag { 
             background: rgba(139, 92, 246, 0.1); color: var(--accent); 
-            padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; 
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; 
+            border: 1px solid rgba(139, 92, 246, 0.3); text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        .project-desc { color: #aaa; margin-bottom: 2rem; line-height: 1.6; }
+        .project-desc { color: #bbb; margin-bottom: 2rem; line-height: 1.6; font-size: 1rem; }
+        .disclaimer { font-size: 0.8rem; color: #444; font-style: italic; margin-top: 1rem; border-left: 2px solid #333; padding-left: 10px;}
 
-        /* GRILLA DE IMAGENES DENTRO DEL PROYECTO */
+        /* GALERÍA DE IMÁGENES */
         .project-gallery {
             display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
         }
         .gallery-item {
             background: #000; padding: 10px 10px 0 10px; border-radius: 8px; border: 1px solid #333;
+            transition: 0.3s;
         }
+        .gallery-item:hover { border-color: #555; }
         .gallery-item img { width: 100%; border-radius: 4px 4px 0 0; display: block; }
         .gallery-caption { font-size: 0.75rem; color: #666; text-align: center; padding: 8px 0; }
 
@@ -196,10 +201,10 @@
                     <a href="#about" class="nav-item">About</a>
                     <a href="#experience" class="nav-item">Experience</a>
                     
-                    <div class="nav-title">Projects</div>
+                    <div class="nav-title">Featured Work</div>
                     <a href="#nestle" class="nav-item">● Nestlé Intelligence</a>
                     <a href="#qtgc" class="nav-item">○ QTGC Finance</a>
-                    <a href="#ministerio" class="nav-item">○ Export Model</a>
+                    <a href="#ministerio" class="nav-item">○ Export Strategy</a>
                 </nav>
             </div>
 
@@ -264,7 +269,7 @@
                 <h2>Selected Work</h2>
 
                 <article id="nestle" class="project-block">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" class="project-header-img" alt="Nestle Cover">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" class="project-header-img header-contain" alt="Nestle Cover">
                     
                     <div class="project-content">
                         <div class="project-meta">
@@ -291,16 +296,63 @@
                     </div>
                 </article>
 
-                <article id="qtgc" class="project-block" style="opacity: 0.6;">
+                <article id="qtgc" class="project-block">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH1.png?raw=true" class="project-header-img header-contain" alt="QTGC Dashboard">
+                    
                     <div class="project-content">
                         <div class="project-meta">
-                            <h3 class="project-title">QTGC Financial Dashboard</h3>
-                            <span class="project-tag">En Progreso</span>
+                            <h3 class="project-title">QTGC Inventory & Cost Tower</h3>
+                            <span class="project-tag">Logistics + Financial KPIs</span>
                         </div>
+                        
                         <p class="project-desc">
-                            Sistema de control de centros de costos para el club deportivo más exclusivo del país.
-                            (Próximamente)
+                            Sistema de Inteligencia de Inventarios para mejorar el <strong>Nivel de Servicio (Fill Rate)</strong> y controlar el Costo de Ventas.
+                            La herramienta cruza datos de existencias con costos unitarios para detectar quiebres de stock críticos, logrando una mejora de 
+                            <strong>12 puntos en órdenes completas</strong> en las bodegas principales.
                         </p>
+
+                        <div class="project-gallery">
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH2.png?raw=true" alt="Diagnóstico Rendimiento">
+                                <div class="gallery-caption">Análisis de Nivel de Servicio y Quiebres</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH1.png?raw=true" alt="Diagnóstico Integral">
+                                <div class="gallery-caption">Diagnóstico Integral de Costos</div>
+                            </div>
+                        </div>
+                        
+                        <div class="disclaimer">
+                            * Nota de Confidencialidad: Los datos presentados han sido randomizados y limitados a un periodo de 3 meses para proteger la integridad de la información sensible de la organización.
+                        </div>
+                    </div>
+                </article>
+
+                <article id="ministerio" class="project-block">
+                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Estudio_Mercado.png?raw=true" class="project-header-img header-contain" alt="Estudio Mercado">
+                    
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <h3 class="project-title">Asian Market Entry Strategy</h3>
+                            <span class="project-tag">Market Research + Feasibility</span>
+                        </div>
+                        
+                        <p class="project-desc">
+                            Modelo de factibilidad técnica y financiera para la exportación de productos agrícolas (Aguacate Hass) hacia Corea del Sur.
+                            El proyecto analizó barreras arancelarias y costos logísticos, validando la viabilidad del negocio con una 
+                            <strong>TIR sólida del 25%</strong> y un <strong>VAN proyectado de $26.8M</strong>.
+                        </p>
+
+                        <div class="project-gallery">
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Rentabilidad_Mercado.png?raw=true" alt="Propuesta Negocio">
+                                <div class="gallery-caption">Modelo Financiero (TIR/VAN)</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Estudio_Mercado.png?raw=true" alt="Estudio Mercado">
+                                <div class="gallery-caption">Análisis de Mercado (Corea)</div>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
