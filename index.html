@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diego Chicaiza | Junior Business & Data Consultant</title>
+    <title>Diego Chicaiza</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
     <style>
-        /* --- ESTILO GEORGE KIM (DARK MODE MINIMALISTA) --- */
         :root {
-            --bg-color: #111111;
-            --text-color: #e0e0e0;
-            --accent-color: #ffffff;
-            --secondary-text: #888888;
-            --nestle-blue: #004F9F; /* Un toque sutil de color corporativo */
-            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            /* PALETA DE COLORES MEJORADA */
+            --bg-dark: #0a0a0a;
+            --bg-panel: #161616;
+            --text-main: #ededed;
+            --text-muted: #888888;
+            --accent-blue: #3291ff; /* Un azul más "eléctrico" para detalles */
+            --nestle-brand: #004F9F;
+            --font-main: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            /* 2. FONDO CON DEGRADADO SUTIL (YA NO ES PLANO) */
+            background: radial-gradient(circle at top right, #1a202c, var(--bg-dark));
+            color: var(--text-main);
             font-family: var(--font-main);
             margin: 0;
             display: flex;
             min-height: 100vh;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* Texto más nítido */
         }
 
-        a { color: inherit; text-decoration: none; transition: 0.3s; }
-        a:hover { color: var(--accent-color); }
+        a { text-decoration: none; color: inherit; transition: 0.2s ease; }
+        a:hover { color: var(--accent-blue); }
 
-        /* --- LAYOUT: SIDEBAR (IZQ) + CONTENIDO (DER) --- */
         .container {
             display: flex;
             width: 100%;
@@ -36,111 +43,212 @@
             margin: 0 auto;
         }
 
-        /* BARRA LATERAL FIJA */
+        /* --- BARRA LATERAL (PERFIL) --- */
         .sidebar {
-            width: 300px;
-            padding: 4rem 2rem;
+            width: 320px;
+            padding: 5rem 3rem;
             position: sticky;
             top: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-right: 1px solid #222;
+            /* Línea divisoria más sutil */
+            border-right: 1px solid rgba(255,255,255,0.05); 
+        }
+
+        .profile-container {
+            animation: fadeIn 1s ease;
         }
 
         .profile-pic {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 1.5rem;
-            filter: grayscale(100%); /* Efecto Pro B&N */
-            transition: 0.3s;
+            margin-bottom: 2rem;
+            filter: grayscale(100%);
+            border: 2px solid rgba(255,255,255,0.1); /* Anillo sutil */
+            transition: all 0.4s ease;
         }
-        .profile-pic:hover { filter: grayscale(0%); }
+        .profile-pic:hover { 
+            filter: grayscale(0%); 
+            transform: scale(1.05);
+            border-color: var(--accent-blue);
+        }
 
-        .name { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); margin: 0; }
-        .tagline { font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 1rem; display: block;}
+        .name { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: #fff; 
+            letter-spacing: -0.5px; 
+            margin: 0 0 0.5rem 0; 
+        }
+        
+        .tagline { 
+            font-size: 0.95rem; 
+            color: var(--accent-blue); 
+            font-weight: 600;
+            margin-bottom: 1.5rem; 
+            display: block;
+        }
         
         .bio { 
-            font-size: 0.85rem; 
-            color: var(--secondary-text); 
-            margin-top: 1rem; 
-            line-height: 1.5;
+            font-size: 0.9rem; 
+            color: var(--text-muted); 
+            line-height: 1.7;
         }
 
-        .social-links { margin-top: 2rem; display: flex; gap: 1rem; font-size: 0.9rem;}
-        .social-links a { border-bottom: 1px solid #333; padding-bottom: 2px; }
+        .social-links { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.8rem; 
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        .social-links a:hover { opacity: 1; padding-left: 5px; } /* Movimiento al pasar mouse */
 
-        /* CONTENIDO PRINCIPAL */
+        /* --- CONTENIDO PRINCIPAL --- */
         .main-content {
             flex: 1;
-            padding: 4rem 4rem;
+            padding: 5rem 5rem;
         }
 
-        section { margin-bottom: 5rem; }
-        h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-text); margin-bottom: 2rem; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        section { margin-bottom: 6rem; animation: slideUp 1s ease; }
+        
+        h2 { 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--text-muted); 
+            margin-bottom: 2.5rem; 
+            display: flex;
+            align-items: center;
+        }
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin-left: 1rem;
+        }
 
-        /* ESTILO DEL CASE STUDY (NESTLE) */
+        /* --- TARJETA DE PROYECTO (EL CASE STUDY) --- */
         .case-study {
-            background: #1a1a1a;
-            border-radius: 12px;
+            background: var(--bg-panel);
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #333;
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra profunda */
         }
-        .case-study:hover { transform: translateY(-5px); border-color: var(--nestle-blue); }
+        
+        /* 3. MICRO-INTERACCIÓN: LEVANTAR AL PASAR MOUSE */
+        .case-study:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--nestle-blue); 
+            box-shadow: 0 20px 40px rgba(0, 79, 159, 0.2); /* Resplandor azul */
+        }
 
-        .case-header img { width: 100%; height: auto; display: block; opacity: 0.9; }
+        .case-header {
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .case-header img { width: 100%; display: block; opacity: 0.95; transition: 0.4s; }
+        .case-study:hover .case-header img { opacity: 1; }
+
+        .case-body { padding: 2.5rem; }
         
-        .case-body { padding: 2rem; }
-        .case-title { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); margin: 0 0 0.5rem 0; }
-        .case-subtitle { color: var(--secondary-text); font-size: 1rem; margin-bottom: 1.5rem; }
+        .case-title { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: #fff; 
+            margin: 0 0 0.5rem 0; 
+        }
+        .case-subtitle { 
+            color: var(--accent-blue); 
+            font-size: 1.05rem; 
+            margin-bottom: 1.5rem; 
+            font-weight: 500;
+        }
         
-        /* Efecto Laptop para las capturas de detalle */
+        .case-desc { color: #aaa; margin-bottom: 2rem; font-size: 1rem;}
+
+        /* MOCKUPS DE LAPTOP MEJORADOS */
         .laptop-mockup {
             background: #000;
-            padding: 10px 10px 20px 10px;
-            border-radius: 8px 8px 0 0;
+            padding: 12px 12px 0 12px;
+            border-radius: 10px 10px 0 0;
             margin-top: 2rem;
             border: 1px solid #333;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
         }
-        .laptop-mockup img { width: 100%; border-radius: 4px; display: block;}
+        .laptop-mockup img { width: 100%; border-radius: 6px 6px 0 0; display: block;}
+        .caption { 
+            margin-top: 10px; font-size: 0.8rem; color: #555; text-align: center; font-weight: 500; letter-spacing: 0.5px; 
+        }
 
-        /* ESTILO DE EXPERIENCIA (TIMELINE) */
+        /* --- LISTA DE EXPERIENCIA MEJORADA --- */
         .job-item {
             display: flex;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             align-items: flex-start;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: 0.3s;
+            border: 1px solid transparent; /* Invisible por defecto */
         }
-        .job-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            margin-right: 1.5rem;
-            background: #fff; /* Fondo blanco para que se vean los logos */
-            padding: 2px;
-            object-fit: contain;
+        
+        .job-item:hover {
+            background: rgba(255,255,255,0.03); /* Brillo sutil al pasar mouse */
+            border-color: rgba(255,255,255,0.05);
         }
-        .job-details { flex: 1; }
-        .job-role { font-size: 1.1rem; font-weight: 600; color: var(--accent-color); }
-        .job-company { color: var(--secondary-text); font-size: 0.95rem; }
-        .job-date { font-size: 0.8rem; color: #555; margin-bottom: 0.5rem; display: block; }
-        .job-desc { font-size: 0.9rem; color: #bbb; margin-top: 0.5rem; }
 
-        /* VERSION MOVIL */
+        .job-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            margin-right: 1.5rem;
+            background: #fff;
+            padding: 3px;
+            object-fit: contain;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .job-role { font-size: 1.15rem; font-weight: 600; color: #fff; }
+        .job-company { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.2rem;}
+        .job-date { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: var(--accent-blue); 
+            font-weight: 600;
+            margin-bottom: 0.8rem; 
+            display: block; 
+        }
+        .job-desc { 
+            font-size: 0.95rem; 
+            color: #bbb; 
+            margin-top: 0.5rem; 
+            line-height: 1.6;
+        }
+
+        /* ANIMACIONES DE ENTRADA */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* MÓVIL */
         @media (max-width: 768px) {
             .container { flex-direction: column; }
             .sidebar { 
                 width: 100%; 
                 height: auto; 
                 position: relative; 
-                padding: 2rem; 
-                border-bottom: 1px solid #222;
+                padding: 3rem 2rem; 
+                border-bottom: 1px solid rgba(255,255,255,0.1);
                 border-right: none;
             }
-            .main-content { padding: 2rem; }
+            .main-content { padding: 3rem 2rem; }
         }
     </style>
 </head>
@@ -148,61 +256,62 @@
 
     <div class="container">
         <aside class="sidebar">
-            <div>
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Foto%20de%20perfil.jpg?raw=true" alt="Diego Chicaiza" class="profile-pic">
+            <div class="profile-container">
+                <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Foto%20de%20perfil.jpg?raw=true" alt="Diego Chicaiza" class="profile-pic">
                 
                 <h1 class="name">Diego Chicaiza</h1>
                 <span class="tagline">Aspiring Business & Tech Consultant</span>
                 
                 <p class="bio">
-                    Transformando datos complejos en decisiones de negocio rentables. <br><br>
-                    Especializado en Supply Chain y Finanzas.
+                    Convierto datos complejos en decisiones rentables. <br><br>
+                    Mi enfoque combina la estrategia financiera con la eficiencia operativa del Supply Chain.
                 </p>
             </div>
 
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
                 <a href="mailto:ysaacwld@gmail.com">Email ↗</a>
-                <a href="https://github.com/htmlpapu" target="_blank">GitHub</a>
+                <a href="https://github.com/htmlpapu" target="_blank">GitHub ↗</a>
             </div>
         </aside>
 
         <main class="main-content">
 
             <section>
-                <h2>Featured Project</h2>
+                <h2>Featured Case Study</h2>
                 
                 <div class="case-study">
                     <div class="case-header">
-                        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" alt="Nestle Header">
+                        <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Header_Nestle.png?raw=true" alt="Nestle Header">
                     </div>
                     
                     <div class="case-body">
-                        <h3 class="case-title">Nestlé Market Intelligence Dashboard</h3>
-                        <p class="case-subtitle">Optimización de portafolio y simulación financiera de $490k USD.</p>
+                        <h3 class="case-title">Nestlé Market Intelligence</h3>
+                        <p class="case-subtitle">Optimización de portafolio y simulación de $490k USD</p>
                         
-                        <p style="font-size: 0.95rem; color: #ccc;">
-                            Desarrollo de un sistema de inteligencia de negocios para analizar 3.5M kg de importaciones. 
-                            Incluye simuladores de escenario financiero (What-If), detección de nichos premium y forecasting predictivo.
+                        <p class="case-desc">
+                            Desarrollo de un sistema de Business Intelligence para analizar 3.5M kg de importaciones. 
+                            La solución incluye <strong>simuladores financieros (What-If)</strong>, detección de nichos premium y algoritmos de forecasting predictivo.
                         </p>
 
                         <div class="laptop-mockup">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Vista Estrategia Financiera">
+                            <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Vista%204.png?raw=true" alt="Vista Estrategia Financiera">
                         </div>
-                        <div style="margin-top: 10px; font-size: 0.8rem; color: #666; text-align: center;">Vista 4: Simulación de Rentabilidad y Proyección</div>
+                        <div class="caption">Vista 4: Simulación de Rentabilidad y Proyección Financiera</div>
 
                         <div class="laptop-mockup">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%201.png?raw=true" alt="Vista Panorama Mercado">
+                            <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Vista%201.png?raw=true" alt="Vista Panorama Mercado">
                         </div>
+                        <div class="caption">Vista 1: Panorama Competitivo y Share de Mercado</div>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2>Experience</h2>
+                <h2>Professional Experience</h2>
 
                 <div class="job-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ESPE_logo.png?raw=true" alt="QTGC Logo" class="job-logo">
+                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/ESPE_logo.png?raw=true" alt="QTGC Logo" class="job-logo">
                     <div class="job-details">
                         <div class="job-role">Analista de Logística (Trainee)</div>
                         <div class="job-company">Quito Tenis & Golf Club</div>
@@ -212,17 +321,17 @@
                 </div>
 
                 <div class="job-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Gotransport_logo.png?raw=true" alt="Geotransport Logo" class="job-logo">
+                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Gotransport_logo.png?raw=true" alt="Geotransport Logo" class="job-logo">
                     <div class="job-details">
                         <div class="job-role">Asistente de Ops. y Finanzas</div>
                         <div class="job-company">Geotransport S.A.</div>
                         <span class="job-date">Oct 2024 – Abr 2025</span>
-                        <p class="job-desc">Desarrollo de matrices en Excel para validación de pagos SWIFT y limpieza de datos (ETL) para cumplimiento normativo.</p>
+                        <p class="job-desc">Desarrollo de matrices en Excel para validación de pagos SWIFT y limpieza de datos (ETL) para cumplimiento normativo y auditorías.</p>
                     </div>
                 </div>
 
                 <div class="job-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Glod_logo.png?raw=true" alt="Glod Logo" class="job-logo">
+                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Glod_logo.png?raw=true" alt="Glod Logo" class="job-logo">
                     <div class="job-details">
                         <div class="job-role">Practicante de Importaciones</div>
                         <div class="job-company">Venta Directa Glod</div>
@@ -232,7 +341,7 @@
                 </div>
 
                 <div class="job-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Ministerio_logo.png?raw=true" alt="Ministerio Logo" class="job-logo">
+                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Ministerio_logo.png?raw=true" alt="Ministerio Logo" class="job-logo">
                     <div class="job-details">
                         <div class="job-role">Asesor Técnico (Pasantía)</div>
                         <div class="job-company">Ministerio de Producción y Comercio Exterior</div>
@@ -247,12 +356,12 @@
                 <h2>Education</h2>
                 
                 <div class="job-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ESPE_logo.png?raw=true" alt="ESPE Logo" class="job-logo">
+                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/ESPE_logo.png?raw=true" alt="ESPE Logo" class="job-logo">
                     <div class="job-details">
                         <div class="job-role">Licenciatura en Comercio Exterior</div>
                         <div class="job-company">Universidad de las Fuerzas Armadas ESPE</div>
                         <span class="job-date">Graduado Jun 2025</span>
-                        <p class="job-desc">Promedio: 18.70/20.00 (Top Class). Becado por Excelencia Académica.</p>
+                        <p class="job-desc">Promedio: 18.70/20.00 (Top Class).<br>Becado por Excelencia Académica.</p>
                     </div>
                 </div>
             </section>
