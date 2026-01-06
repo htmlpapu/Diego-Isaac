@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Chicaiza | Junior Business & Data Consultant</title>
+    <style>
+        /* --- ESTILO GEORGE KIM (DARK MODE MINIMALISTA) --- */
+        :root {
+            --bg-color: #111111;
+            --text-color: #e0e0e0;
+            --accent-color: #ffffff;
+            --secondary-text: #888888;
+            --nestle-blue: #004F9F; /* Un toque sutil de color corporativo */
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a { color: inherit; text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--accent-color); }
+
+        /* --- LAYOUT: SIDEBAR (IZQ) + CONTENIDO (DER) --- */
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* BARRA LATERAL FIJA */
+        .sidebar {
+            width: 300px;
+            padding: 4rem 2rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid #222;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%); /* Efecto Pro B&N */
+            transition: 0.3s;
+        }
+        .profile-pic:hover { filter: grayscale(0%); }
+
+        .name { font-size: 1.2rem; font-weight: 700; color: var(--accent-color); margin: 0; }
+        .tagline { font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 1rem; display: block;}
+        
+        .bio { 
+            font-size: 0.85rem; 
+            color: var(--secondary-text); 
+            margin-top: 1rem; 
+            line-height: 1.5;
+        }
+
+        .social-links { margin-top: 2rem; display: flex; gap: 1rem; font-size: 0.9rem;}
+        .social-links a { border-bottom: 1px solid #333; padding-bottom: 2px; }
+
+        /* CONTENIDO PRINCIPAL */
+        .main-content {
+            flex: 1;
+            padding: 4rem 4rem;
+        }
+
+        section { margin-bottom: 5rem; }
+        h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-text); margin-bottom: 2rem; border-bottom: 1px solid #222; padding-bottom: 10px; }
+
+        /* ESTILO DEL CASE STUDY (NESTLE) */
+        .case-study {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+        .case-study:hover { transform: translateY(-5px); border-color: var(--nestle-blue); }
+
+        .case-header img { width: 100%; height: auto; display: block; opacity: 0.9; }
+        
+        .case-body { padding: 2rem; }
+        .case-title { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); margin: 0 0 0.5rem 0; }
+        .case-subtitle { color: var(--secondary-text); font-size: 1rem; margin-bottom: 1.5rem; }
+        
+        /* Efecto Laptop para las capturas de detalle */
+        .laptop-mockup {
+            background: #000;
+            padding: 10px 10px 20px 10px;
+            border-radius: 8px 8px 0 0;
+            margin-top: 2rem;
+            border: 1px solid #333;
+        }
+        .laptop-mockup img { width: 100%; border-radius: 4px; display: block;}
+
+        /* ESTILO DE EXPERIENCIA (TIMELINE) */
+        .job-item {
+            display: flex;
+            margin-bottom: 2.5rem;
+            align-items: flex-start;
+        }
+        .job-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-right: 1.5rem;
+            background: #fff; /* Fondo blanco para que se vean los logos */
+            padding: 2px;
+            object-fit: contain;
+        }
+        .job-details { flex: 1; }
+        .job-role { font-size: 1.1rem; font-weight: 600; color: var(--accent-color); }
+        .job-company { color: var(--secondary-text); font-size: 0.95rem; }
+        .job-date { font-size: 0.8rem; color: #555; margin-bottom: 0.5rem; display: block; }
+        .job-desc { font-size: 0.9rem; color: #bbb; margin-top: 0.5rem; }
+
+        /* VERSION MOVIL */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: relative; 
+                padding: 2rem; 
+                border-bottom: 1px solid #222;
+                border-right: none;
+            }
+            .main-content { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div>
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Foto%20de%20perfil.jpg?raw=true" alt="Diego Chicaiza" class="profile-pic">
+                
+                <h1 class="name">Diego Chicaiza</h1>
+                <span class="tagline">Aspiring Business & Tech Consultant</span>
+                
+                <p class="bio">
+                    Transformando datos complejos en decisiones de negocio rentables. <br><br>
+                    Especializado en Supply Chain y Finanzas.
+                </p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
+                <a href="mailto:ysaacwld@gmail.com">Email ↗</a>
+                <a href="https://github.com/htmlpapu" target="_blank">GitHub</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <section>
+                <h2>Featured Project</h2>
+                
+                <div class="case-study">
+                    <div class="case-header">
+                        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" alt="Nestle Header">
+                    </div>
+                    
+                    <div class="case-body">
+                        <h3 class="case-title">Nestlé Market Intelligence Dashboard</h3>
+                        <p class="case-subtitle">Optimización de portafolio y simulación financiera de $490k USD.</p>
+                        
+                        <p style="font-size: 0.95rem; color: #ccc;">
+                            Desarrollo de un sistema de inteligencia de negocios para analizar 3.5M kg de importaciones. 
+                            Incluye simuladores de escenario financiero (What-If), detección de nichos premium y forecasting predictivo.
+                        </p>
+
+                        <div class="laptop-mockup">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Vista Estrategia Financiera">
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.8rem; color: #666; text-align: center;">Vista 4: Simulación de Rentabilidad y Proyección</div>
+
+                        <div class="laptop-mockup">
+                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%201.png?raw=true" alt="Vista Panorama Mercado">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Experience</h2>
+
+                <div class="job-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ESPE_logo.png?raw=true" alt="QTGC Logo" class="job-logo">
+                    <div class="job-details">
+                        <div class="job-role">Analista de Logística (Trainee)</div>
+                        <div class="job-company">Quito Tenis & Golf Club</div>
+                        <span class="job-date">Mayo 2025 – Presente</span>
+                        <p class="job-desc">Diseño de tableros ejecutivos en Power BI para el monitoreo de KPIs financieros ($200k+ inversión mensual) y auditoría de trazabilidad de inventarios.</p>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Gotransport_logo.png?raw=true" alt="Geotransport Logo" class="job-logo">
+                    <div class="job-details">
+                        <div class="job-role">Asistente de Ops. y Finanzas</div>
+                        <div class="job-company">Geotransport S.A.</div>
+                        <span class="job-date">Oct 2024 – Abr 2025</span>
+                        <p class="job-desc">Desarrollo de matrices en Excel para validación de pagos SWIFT y limpieza de datos (ETL) para cumplimiento normativo.</p>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Glod_logo.png?raw=true" alt="Glod Logo" class="job-logo">
+                    <div class="job-details">
+                        <div class="job-role">Practicante de Importaciones</div>
+                        <div class="job-company">Venta Directa Glod</div>
+                        <span class="job-date">Mar 2024 – Jul 2024</span>
+                        <p class="job-desc">Análisis de estacionalidad de ventas para optimización de compras y digitalización de archivo aduanero.</p>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Ministerio_logo.png?raw=true" alt="Ministerio Logo" class="job-logo">
+                    <div class="job-details">
+                        <div class="job-role">Asesor Técnico (Pasantía)</div>
+                        <div class="job-company">Ministerio de Producción y Comercio Exterior</div>
+                        <span class="job-date">May 2023 – Jul 2023</span>
+                        <p class="job-desc">Modelado de datos en Power BI para estudios de factibilidad de exportación a mercados asiáticos.</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <section>
+                <h2>Education</h2>
+                
+                <div class="job-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ESPE_logo.png?raw=true" alt="ESPE Logo" class="job-logo">
+                    <div class="job-details">
+                        <div class="job-role">Licenciatura en Comercio Exterior</div>
+                        <div class="job-company">Universidad de las Fuerzas Armadas ESPE</div>
+                        <span class="job-date">Graduado Jun 2025</span>
+                        <p class="job-desc">Promedio: 18.70/20.00 (Top Class). Becado por Excelencia Académica.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
