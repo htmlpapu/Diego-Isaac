@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -19,7 +19,7 @@
             
             /* ACCENT: PURPLE RAIN */
             --accent: #8b5cf6; 
-            --accent-glow: rgba(139, 92, 246, 0.15);
+            --accent-glow: rgba(139, 92, 246, 0.2); /* Un poco más intenso para el header */
             
             --border: #222;
             --font-main: 'Inter', sans-serif;
@@ -47,44 +47,54 @@
             margin: 0 auto;
         }
 
-        /* 1. SIDEBAR FIJA */
+        /* 1. SIDEBAR FIJA (Ahora con Experiencia) */
         .sidebar {
-            width: 280px;
-            padding: 4rem 2rem;
+            width: 300px; /* Un poco más ancha para que quepa la info */
+            padding: 4rem 2.5rem;
             position: sticky;
             top: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             border-right: 1px solid var(--border);
             flex-shrink: 0;
+            overflow-y: auto; /* Scroll si la pantalla es muy baja */
         }
+        /* Ocultar scrollbar fea en sidebar */
+        .sidebar::-webkit-scrollbar { width: 0px; background: transparent; }
 
-        .brand { font-weight: 700; font-size: 1rem; color: #fff; display: flex; align-items: center; gap: 12px; }
+
+        .brand { font-weight: 700; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 12px; margin-bottom: 3rem;}
         .avatar-small { 
-            width: 36px; height: 36px; border-radius: 50%; 
+            width: 40px; height: 40px; border-radius: 50%; 
             filter: grayscale(100%); transition: 0.3s;
             border: 2px solid transparent;
         }
         .brand:hover .avatar-small { filter: grayscale(0%); border-color: var(--accent); }
 
         /* NAV LATERAL */
-        .nav-links { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 3rem; }
+        .nav-links { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 3rem; }
         
-        .nav-title { 
+        .section-title { 
             font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; 
-            color: #444; margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 700;
+            color: #555; margin-bottom: 1rem; font-weight: 700;
         }
 
         .nav-item { 
             color: var(--text-muted); font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px;
         }
         .nav-item:hover { color: var(--accent); transform: translateX(5px); }
-        .nav-item.active { color: #fff; }
 
-        .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); }
-        .contact-area a:hover { color: var(--accent); text-decoration: underline; }
+        /* EXPERIENCIA COMPACTA (SIDEBAR) */
+        .sidebar-exp-list { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 3rem;}
+        .sidebar-exp-item { display: flex; flex-direction: column; }
+        .exp-role { font-size: 0.9rem; font-weight: 600; color: #fff; }
+        .exp-company { font-size: 0.85rem; color: var(--text-muted); }
+        .exp-date { font-size: 0.75rem; color: #555; margin-top: 2px; }
+
+
+        .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-top: auto; }
+        .contact-area a:hover { color: var(--accent); }
 
         /* 2. CONTENIDO PRINCIPAL */
         .main-content {
@@ -92,40 +102,41 @@
             padding: 5rem 6rem;
         }
 
-        /* HEADER */
-        .profile-header { margin-bottom: 5rem; max-width: 800px; border-bottom: 1px solid var(--border); padding-bottom: 3rem;}
+        /* HEADER CON "ALMA" (Efecto de luz) */
+        .profile-header { 
+            margin-bottom: 6rem; 
+            max-width: 800px; 
+            position: relative;
+        }
+        /* El brillo morado de fondo */
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
         h1 { 
-            font-size: 2.5rem; font-weight: 800; line-height: 1.1; 
-            letter-spacing: -0.03em; margin-bottom: 1.5rem; 
-            background: linear-gradient(to right, #fff, #aaa);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 3rem; font-weight: 800; line-height: 1.1; 
+            letter-spacing: -0.02em; margin-bottom: 1.5rem; 
         }
         
-        .bio-text { font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; max-width: 650px; }
+        .bio-text { font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; max-width: 650px; }
         .highlight { color: var(--accent); font-weight: 600; }
 
         section { margin-bottom: 6rem; scroll-margin-top: 5rem; }
         h2 { 
             font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; 
-            color: var(--text-muted); margin-bottom: 2rem; display: flex; align-items: center; gap: 10px;
+            color: var(--text-muted); margin-bottom: 3rem; display: flex; align-items: center; gap: 10px;
         }
         h2::after { content: ""; flex: 1; height: 1px; background: #222; }
 
-        /* EXPERIENCIA */
-        .exp-item {
-            display: flex; align-items: center; padding: 1rem;
-            border-bottom: 1px solid var(--border); transition: 0.3s; border-radius: 8px;
-        }
-        .exp-item:hover { background: rgba(255,255,255,0.03); border-bottom-color: transparent; }
-
-        .company-logo {
-            width: 36px; height: 36px; border-radius: 8px; background: #fff; 
-            padding: 3px; object-fit: contain; margin-right: 1.2rem;
-        }
-        .exp-info { flex: 1; }
-        .role { display: block; font-weight: 600; font-size: 1rem; color: #fff; margin-bottom: 2px;}
-        .company { font-size: 0.9rem; color: var(--text-muted); }
-        .date { font-size: 0.85rem; color: #555; font-variant-numeric: tabular-nums; }
 
         /* PROYECTOS */
         .project-block {
@@ -133,55 +144,56 @@
             border-radius: 16px;
             border: 1px solid var(--border);
             overflow: hidden;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem; /* Más espacio entre proyectos */
             transition: 0.4s ease;
         }
 
         .project-block:hover {
             border-color: var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow);
+            box-shadow: 0 0 40px var(--accent-glow); /* Glow más intenso */
             transform: translateY(-5px);
         }
 
         .project-header-img {
             width: 100%; height: auto; display: block; 
-            border-bottom: 1px solid var(--border); opacity: 0.9;
+            border-bottom: 1px solid var(--border); opacity: 0.95;
         }
-        /* Para ajustar headers que sean muy altos */
-        .header-contain { object-fit: cover; max-height: 350px; }
+        .header-contain { object-fit: cover; max-height: 380px; }
 
-        .project-content { padding: 2.5rem; }
+        .project-content { padding: 3rem; }
         
         .project-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
-        .project-title { font-size: 1.8rem; font-weight: 700; color: #fff; margin: 0; }
+        .project-title { font-size: 2rem; font-weight: 700; color: #fff; margin: 0; }
         .project-tag { 
             background: rgba(139, 92, 246, 0.1); color: var(--accent); 
-            padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; 
+            padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; 
             border: 1px solid rgba(139, 92, 246, 0.3); text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        .project-desc { color: #bbb; margin-bottom: 2rem; line-height: 1.6; font-size: 1rem; }
-        .disclaimer { font-size: 0.8rem; color: #444; font-style: italic; margin-top: 1rem; border-left: 2px solid #333; padding-left: 10px;}
+        .project-desc { color: #bbb; margin-bottom: 2.5rem; line-height: 1.7; font-size: 1.05rem; max-width: 90%; }
+        .disclaimer { font-size: 0.85rem; color: #555; font-style: italic; margin-top: 1.5rem; border-left: 3px solid #333; padding-left: 15px;}
 
         /* GALERÍA DE IMÁGENES */
         .project-gallery {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem;
         }
         .gallery-item {
-            background: #000; padding: 10px 10px 0 10px; border-radius: 8px; border: 1px solid #333;
+            background: #050505; padding: 12px 12px 0 12px; border-radius: 10px; border: 1px solid #222;
             transition: 0.3s;
         }
-        .gallery-item:hover { border-color: #555; }
-        .gallery-item img { width: 100%; border-radius: 4px 4px 0 0; display: block; }
-        .gallery-caption { font-size: 0.75rem; color: #666; text-align: center; padding: 8px 0; }
+        .gallery-item:hover { border-color: #444; }
+        .gallery-item img { width: 100%; border-radius: 6px 6px 0 0; display: block; }
+        .gallery-caption { font-size: 0.8rem; color: #777; text-align: center; padding: 10px 0; font-weight: 500;}
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .container { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border); }
-            .nav-links { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border); overflow-y: visible;}
+            .nav-links { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;}
+            .sidebar-exp-list { display: none; } /* Ocultar exp compacta en móvil para no saturar */
             .main-content { padding: 3rem 1.5rem; }
             .project-gallery { grid-template-columns: 1fr; }
+            .profile-header::before { opacity: 0.4; } /* Menos brillo en móvil */
         }
     </style>
 </head>
@@ -197,72 +209,53 @@
                 </div>
 
                 <nav class="nav-links">
-                    <div class="nav-title">Menu</div>
-                    <a href="#about" class="nav-item">About</a>
-                    <a href="#experience" class="nav-item">Experience</a>
-                    
-                    <div class="nav-title">Featured Work</div>
+                    <div class="section-title">Jump to Projects</div>
                     <a href="#nestle" class="nav-item">● Nestlé Intelligence</a>
                     <a href="#qtgc" class="nav-item">○ QTGC Finance</a>
                     <a href="#ministerio" class="nav-item">○ Export Strategy</a>
                 </nav>
+
+                <div class="section-title">Experience</div>
+                <div class="sidebar-exp-list">
+                    <div class="sidebar-exp-item">
+                        <span class="exp-role">Analista de Logística (Trainee)</span>
+                        <span class="exp-company">Quito Tenis & Golf Club</span>
+                        <span class="exp-date">Present</span>
+                    </div>
+                    <div class="sidebar-exp-item">
+                        <span class="exp-role">Asistente de Ops. y Finanzas</span>
+                        <span class="exp-company">Geotransport S.A.</span>
+                        <span class="exp-date">2025</span>
+                    </div>
+                    <div class="sidebar-exp-item">
+                        <span class="exp-role">Practicante de Importaciones</span>
+                        <span class="exp-company">Venta Directa Glod</span>
+                        <span class="exp-date">2024</span>
+                    </div>
+                    <div class="sidebar-exp-item">
+                        <span class="exp-role">Asesor Técnico (Pasantía)</span>
+                        <span class="exp-company">Ministerio de Producción</span>
+                        <span class="exp-date">2023</span>
+                    </div>
+                </div>
+
             </div>
 
             <div class="contact-area">
+                <div class="section-title">Connect</div>
                 <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
                 <a href="mailto:ysaacwld@gmail.com">ysaacwld@gmail.com ↗</a>
-                <span style="color: #444; margin-top: 10px;">© 2026 Quito, EC</span>
             </div>
         </aside>
 
         <main class="main-content">
             
-            <section id="about" class="profile-header">
-                <h1>Business Analyst with focus on <span class="highlight">Strategy & Execution.</span></h1>
+            <section class="profile-header">
+                <h1>Business Analyst focusing on <span class="highlight">Strategy & Financial Impact.</span></h1>
                 <p class="bio-text">
                     Transformando datos complejos en decisiones rentables. 
                     Mi enfoque combina la estrategia financiera con la eficiencia operativa del Supply Chain.
                 </p>
-            </section>
-
-            <section id="experience">
-                <h2>Professional Experience</h2>
-                
-                <div class="exp-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_logo.png?raw=true" class="company-logo" alt="QTGC">
-                    <div class="exp-info">
-                        <span class="role">Analista de Logística (Trainee)</span>
-                        <span class="company">Quito Tenis & Golf Club</span>
-                    </div>
-                    <span class="date">Present</span>
-                </div>
-
-                <div class="exp-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Gotransport_logo.png?raw=true" class="company-logo" alt="Geotransport">
-                    <div class="exp-info">
-                        <span class="role">Asistente de Ops. y Finanzas</span>
-                        <span class="company">Geotransport S.A.</span>
-                    </div>
-                    <span class="date">2025</span>
-                </div>
-
-                <div class="exp-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Glod_logo.png?raw=true" class="company-logo" alt="Glod">
-                    <div class="exp-info">
-                        <span class="role">Practicante de Importaciones</span>
-                        <span class="company">Venta Directa Glod</span>
-                    </div>
-                    <span class="date">2024</span>
-                </div>
-
-                 <div class="exp-item">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Ministerio_logo.png?raw=true" class="company-logo" alt="Ministerio">
-                    <div class="exp-info">
-                        <span class="role">Asesor Técnico (Pasantía)</span>
-                        <span class="company">Ministerio de Producción</span>
-                    </div>
-                    <span class="date">2023</span>
-                </div>
             </section>
 
             <section id="projects">
@@ -297,7 +290,7 @@
                 </article>
 
                 <article id="qtgc" class="project-block">
-                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH1.png?raw=true" class="project-header-img header-contain" alt="QTGC Dashboard">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Qtgc.png?raw=true" class="project-header-img header-contain" alt="QTGC Dashboard">
                     
                     <div class="project-content">
                         <div class="project-meta">
@@ -313,12 +306,12 @@
 
                         <div class="project-gallery">
                             <div class="gallery-item">
-                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH2.png?raw=true" alt="Diagnóstico Rendimiento">
-                                <div class="gallery-caption">Análisis de Nivel de Servicio y Quiebres</div>
-                            </div>
-                            <div class="gallery-item">
                                 <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH1.png?raw=true" alt="Diagnóstico Integral">
                                 <div class="gallery-caption">Diagnóstico Integral de Costos</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_DASH2.png?raw=true" alt="Análisis de Quiebres">
+                                <div class="gallery-caption">Análisis de Nivel de Servicio y Quiebres</div>
                             </div>
                         </div>
                         
@@ -329,7 +322,7 @@
                 </article>
 
                 <article id="ministerio" class="project-block">
-                    <img src="https://github.com/htmlpapu/portafolio-assets/blob/main/Estudio_Mercado.png?raw=true" class="project-header-img header-contain" alt="Estudio Mercado">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_ministerio.png?raw=true" class="project-header-img header-contain" alt="Estudio Mercado">
                     
                     <div class="project-content">
                         <div class="project-meta">
