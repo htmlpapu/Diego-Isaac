@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diego Chicaiza | Business Consultant</title>
+    <title>Diego Chicaiza</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,14 +11,21 @@
 
     <style>
         :root {
-            --bg-body: #050505; /* Casi negro absoluto */
-            --bg-card: #111111;
+            /* TEMA DARK PURPLE */
+            --bg-body: #050505;
+            --bg-card: #0f0f0f;
             --text-main: #ffffff;
-            --text-muted: #737373; /* Gris George Kim exacto */
-            --accent: #3b82f6; /* Azul sutil para links */
-            --border: #262626;
+            --text-muted: #888;
+            
+            /* TU COLOR FAVORITO: MORADO */
+            --accent: #8b5cf6; /* Morado vibrante */
+            --accent-glow: rgba(139, 92, 246, 0.15); /* Resplandor morado */
+            
+            --border: #222;
             --font-main: 'Inter', sans-serif;
         }
+
+        html { scroll-behavior: smooth; } /* Scroll suave al dar clic */
 
         body {
             background-color: var(--bg-body);
@@ -31,9 +38,8 @@
         }
 
         a { text-decoration: none; color: inherit; transition: 0.2s; }
-        a:hover { color: #fff; }
-
-        /* --- LAYOUT PRINCIPAL --- */
+        
+        /* --- LAYOUT --- */
         .container {
             display: flex;
             width: 100%;
@@ -41,7 +47,7 @@
             margin: 0 auto;
         }
 
-        /* 1. SIDEBAR (Navegación Fija) */
+        /* 1. SIDEBAR FIJA */
         .sidebar {
             width: 280px;
             padding: 4rem 2rem;
@@ -55,127 +61,122 @@
             flex-shrink: 0;
         }
 
-        .brand { font-weight: 700; font-size: 1rem; color: #fff; display: flex; align-items: center; gap: 10px; }
-        .avatar-small { width: 32px; height: 32px; border-radius: 50%; filter: grayscale(100%); }
+        .brand { font-weight: 700; font-size: 1rem; color: #fff; display: flex; align-items: center; gap: 12px; }
+        .avatar-small { 
+            width: 36px; height: 36px; border-radius: 50%; 
+            filter: grayscale(100%); transition: 0.3s;
+            border: 2px solid transparent;
+        }
+        .brand:hover .avatar-small { filter: grayscale(0%); border-color: var(--accent); }
 
-        .nav-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; }
-        .nav-item { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
-        .nav-item:hover { color: #fff; transform: translateX(5px); }
+        /* MENU DE NAVEGACIÓN LATERAL */
+        .nav-links { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 3rem; }
+        
+        .nav-title { 
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; 
+            color: #444; margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 700;
+        }
+
+        .nav-item { 
+            color: var(--text-muted); font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px;
+        }
+        .nav-item:hover { color: var(--accent); transform: translateX(5px); }
         .nav-item.active { color: #fff; }
 
-        .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+        .contact-area { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); }
+        .contact-area a:hover { color: var(--accent); text-decoration: underline; }
 
-        /* 2. CONTENIDO PRINCIPAL (DENSO) */
+        /* 2. CONTENIDO PRINCIPAL SCROLLABLE */
         .main-content {
             flex: 1;
-            padding: 5rem 4rem; /* Menos padding para reducir vacíos */
+            padding: 5rem 6rem;
         }
 
-        /* HEADER DEL PERFIL */
-        .profile-header { margin-bottom: 4rem; max-width: 800px; }
+        /* INTRODUCCIÓN */
+        .profile-header { margin-bottom: 5rem; max-width: 800px; border-bottom: 1px solid var(--border); padding-bottom: 3rem;}
         h1 { 
-            font-size: 2.2rem; 
-            font-weight: 700; 
-            line-height: 1.2; 
-            letter-spacing: -0.03em; 
-            margin-bottom: 1rem; 
+            font-size: 2.5rem; font-weight: 800; line-height: 1.1; 
+            letter-spacing: -0.03em; margin-bottom: 1.5rem; 
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         
-        .bio-text { 
-            font-size: 1.1rem; 
-            color: var(--text-muted); 
-            line-height: 1.6; 
-            max-width: 600px;
-        }
+        .bio-text { font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; max-width: 650px; }
+        .highlight { color: var(--accent); font-weight: 600; }
 
-        /* GRID: EXPERIENCIA (IZQ) vs PROYECTOS (DER) */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr; /* CV más ancho, Proyectos a la derecha */
-            gap: 4rem;
-        }
-
-        /* SECCIÓN TÍTULOS */
+        section { margin-bottom: 6rem; scroll-margin-top: 5rem; }
         h2 { 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.05em; 
-            color: var(--text-muted); 
-            margin-bottom: 1.5rem; 
-            font-weight: 600;
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; 
+            color: var(--text-muted); margin-bottom: 2rem; display: flex; align-items: center; gap: 10px;
         }
+        h2::after { content: ""; flex: 1; height: 1px; background: #222; }
 
-        /* --- LISTA DE EXPERIENCIA (ESTILO GEORGE KIM "TEAM") --- */
-        .experience-list { display: flex; flex-direction: column; gap: 0.5rem; }
-
+        /* --- LISTA DE EXPERIENCIA (COMPACTA) --- */
         .exp-item {
-            display: flex;
-            align-items: center;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05); /* Línea muy sutil */
-            transition: 0.2s;
+            display: flex; align-items: center; padding: 1rem;
+            border-bottom: 1px solid var(--border); transition: 0.3s; border-radius: 8px;
         }
-        .exp-item:hover { background: rgba(255,255,255,0.02); padding-left: 10px; border-radius: 6px; border-bottom: 1px solid transparent;}
+        .exp-item:hover { background: rgba(255,255,255,0.03); border-bottom-color: transparent; }
 
-        /* LOGOS "OLD WAY" (PEQUEÑOS) */
         .company-logo {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            background: #fff; /* Fondo blanco para logos PNG */
-            padding: 2px;
-            object-fit: contain;
-            margin-right: 1rem;
+            width: 36px; height: 36px; border-radius: 8px; background: #fff; 
+            padding: 3px; object-fit: contain; margin-right: 1.2rem;
         }
-
         .exp-info { flex: 1; }
-        .role { display: block; font-weight: 600; font-size: 0.95rem; color: #fff; }
-        .company { font-size: 0.85rem; color: var(--text-muted); }
-        .date { font-size: 0.85rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+        .role { display: block; font-weight: 600; font-size: 1rem; color: #fff; margin-bottom: 2px;}
+        .company { font-size: 0.9rem; color: var(--text-muted); }
+        .date { font-size: 0.85rem; color: #555; font-variant-numeric: tabular-nums; }
 
-        /* --- LISTA DE PROYECTOS (BOTONES) --- */
-        .projects-list { display: flex; flex-direction: column; gap: 1rem; }
-
-        .project-card {
+        /* --- GALERÍA DE PROYECTOS (GRANDE) --- */
+        .project-block {
             background: var(--bg-card);
+            border-radius: 16px;
             border: 1px solid var(--border);
-            padding: 1.2rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            transition: 0.4s ease;
         }
+
+        .project-block:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow); /* EL GLOW MORADO */
+            transform: translateY(-5px);
+        }
+
+        .project-header-img {
+            width: 100%; height: auto; display: block; 
+            border-bottom: 1px solid var(--border); opacity: 0.9;
+        }
+
+        .project-content { padding: 2.5rem; }
         
-        .project-card:hover {
-            background: #1a1a1a;
-            border-color: #444;
-            transform: translateY(-2px);
+        .project-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+        .project-title { font-size: 1.8rem; font-weight: 700; color: #fff; margin: 0; }
+        .project-tag { 
+            background: rgba(139, 92, 246, 0.1); color: var(--accent); 
+            padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; 
+            border: 1px solid rgba(139, 92, 246, 0.3);
         }
 
-        .project-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
+        .project-desc { color: #aaa; margin-bottom: 2rem; line-height: 1.6; }
 
-        .project-info h3 { margin: 0; font-size: 0.95rem; font-weight: 600; color: #fff; }
-        .project-info p { margin: 2px 0 0 0; font-size: 0.8rem; color: var(--text-muted); }
-        .arrow { margin-left: auto; color: var(--text-muted); opacity: 0; transition: 0.2s; }
-        .project-card:hover .arrow { opacity: 1; transform: translateX(5px); }
+        /* GRILLA DE IMAGENES DENTRO DEL PROYECTO */
+        .project-gallery {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+        }
+        .gallery-item {
+            background: #000; padding: 10px 10px 0 10px; border-radius: 8px; border: 1px solid #333;
+        }
+        .gallery-item img { width: 100%; border-radius: 4px 4px 0 0; display: block; }
+        .gallery-caption { font-size: 0.75rem; color: #666; text-align: center; padding: 8px 0; }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .container { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem; }
-            .content-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border); }
+            .nav-links { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
             .main-content { padding: 3rem 1.5rem; }
+            .project-gallery { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -184,124 +185,126 @@
     <div class="container">
         
         <aside class="sidebar">
-            <div class="brand">
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Foto%20de%20perfil.jpg?raw=true" class="avatar-small">
-                <span>Diego C.</span>
+            <div>
+                <div class="brand">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Foto%20de%20perfil.jpg?raw=true" class="avatar-small">
+                    <span>Diego Chicaiza</span>
+                </div>
+
+                <nav class="nav-links">
+                    <div class="nav-title">Menu</div>
+                    <a href="#about" class="nav-item">About</a>
+                    <a href="#experience" class="nav-item">Experience</a>
+                    
+                    <div class="nav-title">Projects</div>
+                    <a href="#nestle" class="nav-item">● Nestlé Intelligence</a>
+                    <a href="#qtgc" class="nav-item">○ QTGC Finance</a>
+                    <a href="#ministerio" class="nav-item">○ Export Model</a>
+                </nav>
             </div>
 
-            <nav class="nav-links">
-                <a href="#" class="nav-item active">Overview</a>
-                <a href="#" class="nav-item">Resume (CV)</a>
-                <a href="mailto:ysaacwld@gmail.com" class="nav-item">Contact</a>
-            </nav>
-
             <div class="contact-area">
-                <span>Based in Quito, EC</span>
-                <span style="color: #444;">© 2026</span>
+                <a href="https://www.linkedin.com/in/diego-chicaiza-tenemaza/" target="_blank">LinkedIn ↗</a>
+                <a href="mailto:ysaacwld@gmail.com">ysaacwld@gmail.com ↗</a>
+                <span style="color: #444; margin-top: 10px;">© 2026 Quito, EC</span>
             </div>
         </aside>
 
         <main class="main-content">
             
-            <div class="profile-header">
-                <h1>Business Analyst with focus on Strategy & Execution.</h1>
+            <section id="about" class="profile-header">
+                <h1>Business Analyst with focus on <span class="highlight">Strategy & Execution.</span></h1>
                 <p class="bio-text">
-                    Transformando datos complejos en decisiones rentables. <br>
-                    Especializado en Supply Chain y Finanzas Corporativas.
+                    Transformando datos complejos en decisiones rentables. 
+                    Mi enfoque combina la estrategia financiera con la eficiencia operativa del Supply Chain.
                 </p>
-                <p style="font-size: 0.9rem; color: #555; margin-top: 1rem;">
-                    Prev. QTGC, Geotransport
-                </p>
-            </div>
+            </section>
 
-            <div class="content-grid">
+            <section id="experience">
+                <h2>Professional Experience</h2>
                 
-                <section>
-                    <h2>Experience (Team)</h2>
-                    <div class="experience-list">
-                        
-                        <div class="exp-item">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_logo.png?raw=true" class="company-logo" alt="QTGC">
-                            <div class="exp-info">
-                                <span class="role">Analista de Logística (Trainee)</span>
-                                <span class="company">Quito Tenis & Golf Club</span>
-                            </div>
-                            <span class="date">Present</span>
-                        </div>
-
-                        <div class="exp-item">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Gotransport_logo.png?raw=true" class="company-logo" alt="Geotransport">
-                            <div class="exp-info">
-                                <span class="role">Asistente de Ops. y Finanzas</span>
-                                <span class="company">Geotransport S.A.</span>
-                            </div>
-                            <span class="date">2025</span>
-                        </div>
-
-                        <div class="exp-item">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Glod_logo.png?raw=true" class="company-logo" alt="Glod">
-                            <div class="exp-info">
-                                <span class="role">Practicante de Importaciones</span>
-                                <span class="company">Venta Directa Glod</span>
-                            </div>
-                            <span class="date">2024</span>
-                        </div>
-
-                        <div class="exp-item">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Ministerio_logo.png?raw=true" class="company-logo" alt="Ministerio">
-                            <div class="exp-info">
-                                <span class="role">Asesor Técnico (Pasantía)</span>
-                                <span class="company">Ministerio de Producción</span>
-                            </div>
-                            <span class="date">2023</span>
-                        </div>
-
-                         <div class="exp-item" style="opacity: 0.7;">
-                            <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/ESPE_logo.png?raw=true" class="company-logo" alt="ESPE">
-                            <div class="exp-info">
-                                <span class="role">Comercio Exterior (Top Class)</span>
-                                <span class="company">Universidad de las Fuerzas Armadas</span>
-                            </div>
-                            <span class="date">2025</span>
-                        </div>
-
+                <div class="exp-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/QTGC_logo.png?raw=true" class="company-logo" alt="QTGC">
+                    <div class="exp-info">
+                        <span class="role">Analista de Logística (Trainee)</span>
+                        <span class="company">Quito Tenis & Golf Club</span>
                     </div>
-                </section>
+                    <span class="date">Present</span>
+                </div>
 
-                <section>
-                    <h2>Selected Projects</h2>
-                    <div class="projects-list">
-                        
-                        <a href="#" class="project-card">
-                            <div class="project-icon" style="background: #004F9F; color: white;">N</div> <div class="project-info">
-                                <h3>Nestlé Market Intelligence</h3>
-                                <p>Simulación financiera ($490k) & Forecasting</p>
-                            </div>
-                            <span class="arrow">→</span>
-                        </a>
-
-                        <a href="#" class="project-card">
-                            <div class="project-icon" style="background: #1e3a8a; color: white;">Q</div>
-                            <div class="project-info">
-                                <h3>QTGC Financial Dashboard</h3>
-                                <p>Control de KPIs y Centros de Costos</p>
-                            </div>
-                            <span class="arrow">→</span>
-                        </a>
-
-                        <a href="#" class="project-card">
-                            <div class="project-icon" style="background: #eab308; color: black;">M</div>
-                            <div class="project-info">
-                                <h3>Export Feasibility Model</h3>
-                                <p>Análisis de precios internacionales (Asia)</p>
-                            </div>
-                            <span class="arrow">→</span>
-                        </a>
-
+                <div class="exp-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Gotransport_logo.png?raw=true" class="company-logo" alt="Geotransport">
+                    <div class="exp-info">
+                        <span class="role">Asistente de Ops. y Finanzas</span>
+                        <span class="company">Geotransport S.A.</span>
                     </div>
-                </section>
+                    <span class="date">2025</span>
+                </div>
 
-            </div>
+                <div class="exp-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Glod_logo.png?raw=true" class="company-logo" alt="Glod">
+                    <div class="exp-info">
+                        <span class="role">Practicante de Importaciones</span>
+                        <span class="company">Venta Directa Glod</span>
+                    </div>
+                    <span class="date">2024</span>
+                </div>
+
+                 <div class="exp-item">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Ministerio_logo.png?raw=true" class="company-logo" alt="Ministerio">
+                    <div class="exp-info">
+                        <span class="role">Asesor Técnico (Pasantía)</span>
+                        <span class="company">Ministerio de Producción</span>
+                    </div>
+                    <span class="date">2023</span>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Selected Work</h2>
+
+                <article id="nestle" class="project-block">
+                    <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" class="project-header-img" alt="Nestle Cover">
+                    
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <h3 class="project-title">Nestlé Market Intelligence</h3>
+                            <span class="project-tag">Power BI + Strategy</span>
+                        </div>
+                        
+                        <p class="project-desc">
+                            Optimización de portafolio y simulación financiera de <strong>$490k USD</strong>. 
+                            Desarrollo de un sistema de Business Intelligence para analizar 3.5M kg de importaciones. 
+                            La solución incluye simuladores financieros (What-If), detección de nichos premium y forecasting predictivo.
+                        </p>
+
+                        <div class="project-gallery">
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Vista Financiera">
+                                <div class="gallery-caption">Simulación de Rentabilidad</div>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%201.png?raw=true" alt="Vista Mercado">
+                                <div class="gallery-caption">Panorama Competitivo</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="qtgc" class="project-block" style="opacity: 0.6;">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <h3 class="project-title">QTGC Financial Dashboard</h3>
+                            <span class="project-tag">En Progreso</span>
+                        </div>
+                        <p class="project-desc">
+                            Sistema de control de centros de costos para el club deportivo más exclusivo del país.
+                            (Próximamente)
+                        </p>
+                    </div>
+                </article>
+
+            </section>
 
         </main>
     </div>
