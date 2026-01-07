@@ -89,13 +89,22 @@
             display: block;
             margin: 2rem 0 1rem 0;
             border: 1px solid #222;
+            transition: transform 0.3s ease;
         }
+        
+        /* Efecto Lupa Sutil */
+        img:hover {
+            border-color: #444;
+            transform: scale(1.02);
+        }
+
         .caption {
             text-align: center;
             font-size: 0.85rem;
             color: #666;
             margin-bottom: 4rem;
             display: block;
+            margin-top: -0.5rem;
         }
 
         /* --- TIPOGRAFÍA --- */
@@ -113,15 +122,19 @@
         }
         .highlight-text { font-size: 1.2rem; font-weight: 500; color: #fff; font-style: italic; margin: 0;}
 
-        /* --- SECCIÓN TÉCNICA (GRID DE DIAGRAMAS) --- */
+        /* --- SECCIÓN TÉCNICA (MODO GIGANTE CORREGIDO) --- */
         .tech-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            display: flex;          /* Flexbox para poner uno debajo de otro */
+            flex-direction: column; /* Dirección vertical */
+            gap: 4rem;              /* Espacio entre diagramas */
             margin: 3rem 0;
         }
-        /* Ajuste para que los diagramas se vean nítidos sin borde extra si ya tienen fondo */
-        .tech-grid img { border: none; margin-top: 0; }
+        
+        .tech-grid img { 
+            border: 1px solid #333; 
+            margin-top: 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra para resaltar */
+        }
 
         /* --- EMBED RESPONSIVE --- */
         .embed-wrapper {
@@ -147,7 +160,6 @@
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
             .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .tech-grid { grid-template-columns: 1fr; }
             .article-container { padding: 1.5rem; }
         }
     </style>
@@ -193,11 +205,11 @@
 
         <div class="tech-grid">
             <div>
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Data_Model.jpg?raw=true" alt="Data Model Diagram">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Data_Model.png?raw=true" alt="Data Model Diagram">
                 <span class="caption">Arquitectura de Datos (Star Schema)</span>
             </div>
             <div>
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_DAX_Code.jpg?raw=true" alt="DAX Logic Diagram">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_DAX_Code.png?raw=true" alt="DAX Logic Diagram">
                 <span class="caption">Lógica de Negocio (DAX Avanzado)</span>
             </div>
         </div>
