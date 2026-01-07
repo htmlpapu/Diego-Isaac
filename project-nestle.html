@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nestlé Market Intelligence | Diego Chicaiza</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #050505;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --accent: #8b5cf6; /* Tu Morado */
+            --border: #262626;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            margin: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- NAV SUPERIOR --- */
+        nav {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .back-link:hover { color: var(--accent); transform: translateX(-5px); }
+
+        /* --- CONTENEDOR CENTRAL --- */
+        .article-container {
+            max-width: 900px; /* Ancho de lectura cómodo */
+            margin: 0 auto;
+            padding: 2rem 2rem 8rem 2rem;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* METADATA GRID (Role, Tools, Timeline) */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            margin-bottom: 4rem;
+        }
+        .meta-item h4 { font-size: 0.75rem; text-transform: uppercase; color: #555; margin: 0 0 5px 0; letter-spacing: 1px;}
+        .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
+
+        /* --- IMÁGENES Y CAPTIONS --- */
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 2rem 0 1rem 0;
+            border: 1px solid #222;
+        }
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 4rem;
+            display: block;
+        }
+
+        /* --- TEXTOS --- */
+        h2 { font-size: 1.8rem; font-weight: 700; margin-top: 4rem; margin-bottom: 1rem; color: #fff; }
+        h3 { font-size: 1.3rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; color: #e5e7eb; }
+        p { font-size: 1.05rem; color: #d1d5db; margin-bottom: 1.5rem; }
+        
+        .highlight-box {
+            background: rgba(139, 92, 246, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight-text { font-size: 1.1rem; font-weight: 500; color: #fff; font-style: italic; }
+
+        /* --- SECCIÓN TÉCNICA (GRID) --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* --- EMBED RESPONSIVE --- */
+        .embed-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.1);
+        }
+        .embed-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .article-container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-link">← Volver al Portafolio</a>
+    </nav>
+
+    <div class="article-container">
+        
+        <h1 class="hero-title">Nestlé Market Intelligence Dashboard</h1>
+        <p class="hero-subtitle">Optimizando la estrategia de portafolio mediante simulación financiera y análisis predictivo de 3.5M de registros.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Business Analyst</p>
+            </div>
+            <div class="meta-item">
+                <h4>Stack</h4>
+                <p>Power BI, DAX, Power Query</p>
+            </div>
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>$490k USD Opportunity Identified</p>
+            </div>
+        </div>
+
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Header_Nestle.png?raw=true" alt="Cover">
+        
+        <h2>The Challenge</h2>
+        <p>
+            El mercado de Nutrición Infantil es altamente volátil. La gerencia dependía de reportes estáticos de importaciones que mostraban "qué pasó" pero no "por qué" ni "qué pasará". 
+            Se necesitaba transformar millones de registros crudos de aduana en una herramienta estratégica que permitiera defender el liderazgo de mercado y detectar nichos rentables.
+        </p>
+
+        <h2>The Engineering</h2>
+        <p>
+            La base de cualquier buen análisis es un modelo robusto. Transformé una tabla plana (flat file) en un <strong>Esquema Estrella (Star Schema)</strong>, normalizando dimensiones como Producto, Tiempo y Geografía para optimizar el rendimiento.
+        </p>
+
+        <div class="tech-grid">
+            <div>
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Data_Model.png?raw=true" alt="Data Model">
+                <span class="caption">Arquitectura de Datos (Star Schema)</span>
+            </div>
+            <div>
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_DAX_Code.png?raw=true" alt="DAX Code">
+                <span class="caption">Lógica de Negocio (DAX Avanzado)</span>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p class="highlight-text">
+                "Transformación de Datos: De un reporte estático a una herramienta de toma de decisiones predictiva."
+            </p>
+        </div>
+
+        <h2>Analytical Deep Dive</h2>
+        <p>
+            Más allá del panorama general, el valor real se encuentra en los detalles. Diseñé vistas específicas para responder preguntas críticas sobre precios y segmentación.
+        </p>
+
+        <h3>1. Análisis de Segmentos & Precios</h3>
+        <p>
+            Esta matriz permite correlacionar Volumen vs. Precio Promedio (CIF) para identificar anomalías. Aquí validamos si la estrategia de precios premium de Nestlé se sostiene frente a competidores low-cost.
+        </p>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Vista2_Segmentos.png?raw=true" alt="Vista Segmentos">
+        
+        <h3>2. Evolución de Precios Competitivos</h3>
+        <p>
+            Un gráfico de líneas temporal para monitorear la elasticidad precio y la reacción de la competencia ante nuestros ajustes tarifarios.
+        </p>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Vista3_Precios.png?raw=true" alt="Vista Precios">
+
+        <h2>The Strategic Outcome</h2>
+        <p>
+            La joya de la corona es el <strong>Simulador Financiero (What-If)</strong>. Permite a la gerencia ajustar la tasa de crecimiento esperada y visualizar inmediatamente el impacto en el EBITDA proyectado.
+        </p>
+        <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Simulador Financiero">
+
+        <h2 style="margin-top: 6rem; border-top: 1px solid #222; padding-top: 2rem;">Live Interaction</h2>
+        <p>Interactúa con el reporte real a continuación. Prueba los tooltips y la navegación entre páginas.</p>
+        
+        <div class="embed-wrapper">
+            <iframe title="INFORME" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNTkxYzZjMWEtYTBhYy00M2JlLWJjNDEtZTQxMjNlOTBiOThhIiwidCI6ImFhZjAxNDIwLThmMzItNDllNS1iY2VmLTc5NTM0MGMxZjk2YSJ9" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+
+    </div>
+
+</body>
+</html>
