@@ -14,7 +14,7 @@
             --bg-body: #050505;
             --text-main: #ffffff;
             --text-muted: #9ca3af;
-            --accent: #8b5cf6; /* Tu Morado */
+            --accent: #8b5cf6; /* Morado */
             --border: #262626;
             --font-main: 'Inter', sans-serif;
         }
@@ -48,7 +48,7 @@
 
         /* --- CONTENEDOR CENTRAL --- */
         .article-container {
-            max-width: 900px; /* Ancho de lectura cómodo */
+            max-width: 900px;
             margin: 0 auto;
             padding: 2rem 2rem 8rem 2rem;
         }
@@ -68,7 +68,7 @@
             max-width: 700px;
         }
 
-        /* METADATA GRID (Role, Tools, Timeline) */
+        /* METADATA GRID */
         .meta-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -81,7 +81,7 @@
         .meta-item h4 { font-size: 0.75rem; text-transform: uppercase; color: #555; margin: 0 0 5px 0; letter-spacing: 1px;}
         .meta-item p { margin: 0; font-weight: 500; font-size: 0.95rem; }
 
-        /* --- IMÁGENES Y CAPTIONS --- */
+        /* --- ESTILOS DE IMÁGENES --- */
         img {
             width: 100%;
             height: auto;
@@ -98,27 +98,30 @@
             display: block;
         }
 
-        /* --- TEXTOS --- */
-        h2 { font-size: 1.8rem; font-weight: 700; margin-top: 4rem; margin-bottom: 1rem; color: #fff; }
-        h3 { font-size: 1.3rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; color: #e5e7eb; }
-        p { font-size: 1.05rem; color: #d1d5db; margin-bottom: 1.5rem; }
+        /* --- TIPOGRAFÍA --- */
+        h2 { font-size: 1.8rem; font-weight: 700; margin-top: 5rem; margin-bottom: 1.5rem; color: #fff; border-bottom: 1px solid #222; padding-bottom: 10px;}
+        h3 { font-size: 1.3rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; color: #e5e7eb; }
+        p { font-size: 1.1rem; color: #d1d5db; margin-bottom: 1.5rem; line-height: 1.7; }
         
+        /* CAJA DESTACADA */
         .highlight-box {
             background: rgba(139, 92, 246, 0.05);
             border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 12px 12px 0;
         }
-        .highlight-text { font-size: 1.1rem; font-weight: 500; color: #fff; font-style: italic; }
+        .highlight-text { font-size: 1.2rem; font-weight: 500; color: #fff; font-style: italic; margin: 0;}
 
-        /* --- SECCIÓN TÉCNICA (GRID) --- */
+        /* --- SECCIÓN TÉCNICA (GRID DE DIAGRAMAS) --- */
         .tech-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
+        /* Ajuste para que los diagramas se vean nítidos sin borde extra si ya tienen fondo */
+        .tech-grid img { border: none; margin-top: 0; }
 
         /* --- EMBED RESPONSIVE --- */
         .embed-wrapper {
@@ -130,6 +133,7 @@
             overflow: hidden;
             border: 1px solid var(--border);
             box-shadow: 0 0 40px rgba(139, 92, 246, 0.1);
+            margin-top: 2rem;
         }
         .embed-wrapper iframe {
             position: absolute;
@@ -144,7 +148,7 @@
             .hero-title { font-size: 2.2rem; }
             .meta-grid { grid-template-columns: 1fr; gap: 1rem; }
             .tech-grid { grid-template-columns: 1fr; }
-            .article-container { padding: 1rem; }
+            .article-container { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -189,11 +193,11 @@
 
         <div class="tech-grid">
             <div>
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Data_Model.png?raw=true" alt="Data Model">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_Data_Model.jpg?raw=true" alt="Data Model Diagram">
                 <span class="caption">Arquitectura de Datos (Star Schema)</span>
             </div>
             <div>
-                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_DAX_Code.png?raw=true" alt="DAX Code">
+                <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Nestle_DAX_Code.jpg?raw=true" alt="DAX Logic Diagram">
                 <span class="caption">Lógica de Negocio (DAX Avanzado)</span>
             </div>
         </div>
@@ -227,7 +231,7 @@
         </p>
         <img src="https://github.com/htmlpapu/Assets-Portafolio/blob/main/Vista%204.png?raw=true" alt="Simulador Financiero">
 
-        <h2 style="margin-top: 6rem; border-top: 1px solid #222; padding-top: 2rem;">Live Interaction</h2>
+        <h2 style="border:none;">Live Interaction</h2>
         <p>Interactúa con el reporte real a continuación. Prueba los tooltips y la navegación entre páginas.</p>
         
         <div class="embed-wrapper">
